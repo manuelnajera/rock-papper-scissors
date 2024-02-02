@@ -50,39 +50,43 @@ playGame()
 function playGame(){
     
 
-    for(i=1; i<5; i++){
+    for(i=0; i<5; i++){
         playerSelection = prompt("Rock, paper or scissors?").toLowerCase()
         computerSelection = getComputerChoice()
         let roundResult = playRound(playerSelection, computerSelection)
-        
+
         console.log(roundResult)
 
         switch(roundResult){
             case -1: 
                 score = score -1
-                return ('Sorry, ' + computerSelection + ' beats ' + playerSelection)
+                console.log('Sorry, ' + computerSelection + ' beats ' + playerSelection)
+            break    
             case 0:
                 score = score
-                return ('Draw! Best luck next time')
+                console.log('Draw! Best luck next time')
+            break    
             case 1:
                 score = score + 1
-                return('Congrats! ' + playerSelection + ' beats ' + computerSelection)
+                console.log('Congrats! ' + playerSelection + ' beats ' + computerSelection)
+            break    
             default:
-            return ("error, check console")
+            console.log ("error, check console")
+            break
+        }
     }
 
-    
-    }
+console.log( 'Your score is ' + score)
 
-
-switch(score){
+switch(true){
     case score < 0:
-        return ('Sorry, you lost for ' + (-score) + ' points')
+        console.log ('Sorry, you lost for ' + (-score) + ' points')
+    break    
     case score === 0:
-        return ("It's a draw!")
+        console.log("It's a draw!")
     break
     case score > 0:
-        return ('You won! for ' + score + ' points, congrats!')
+        console.log('You won! for ' + score + ' points, congrats!')
     break          
 
 }
