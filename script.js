@@ -21,7 +21,6 @@ function getComputerChoice () {
   
 }
 
-
 function playRound(playerSelection, computerSelection){
    
     console.log('You chose ' + playerSelection)
@@ -38,12 +37,7 @@ function playRound(playerSelection, computerSelection){
         return "You didn't choose any valid option!"
    }
 
-
-
 }
-
-
-
 playGame()
 
 
