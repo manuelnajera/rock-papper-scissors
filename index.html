@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    
     <link rel="stylesheet" href="CSS/styles.css"> 
 </head>
 <body>
@@ -12,24 +12,33 @@
         Hi! It's rock paper scissors time!
     </h1>
     <span>
-
     </span>
-
     <h2>
         Play against the computer, the first who wins 5 rounds wins the game!
     </h2>
-
-    <div class="button-holder">
-        <button class="start-btn"> "Start"</button>
+    <div class="buttonHolder">
+        <button class="startBtn" id="startBtn"> Start</button>
         <span>
 
         </span>
-        <div class="rps-button-holder">
-            <button class="rock-btn"> "Rock"</button>
-            <button class="paper-btn"> "Paper"</button>
-            <button class="scissors-btn">"Scissors"</button>
+        <h3  class="choiceBtn">Choose your move for the round </h3>
+        <div class="rpsButtonHolder">
+            
+            <button class="choiceBtn" id="rockBtn"> Rock</button>
+            <button class="choiceBtn" id="paperBtn"> Paper</button>
+            <button  class="choiceBtn" id="scissorsBtn">Scissors</button>
         </div>
+        <span id="humanChoice"></span>
+        <span id="computerChoice"></span>
+        <h2 id="resultLabel"></h4>
+        <div class="resultsBox">
+            <span id="humanScore"></span>
+            <span id="drawCount"></span>
+            <span id="computerScore"></span>
+        </div>
+        
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
