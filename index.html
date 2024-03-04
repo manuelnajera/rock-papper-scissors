@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>
-        Hi! It's rock paper scissors time!
+        It's rock paper scissors time!
     </h1>
     <span>
     </span>
@@ -23,18 +23,23 @@
         </span>
         <h3  class="choiceBtn">Choose your move for the round </h3>
         <div class="rpsButtonHolder">
-            
-            <button class="choiceBtn" id="rockBtn"> Rock</button>
-            <button class="choiceBtn" id="paperBtn"> Paper</button>
-            <button  class="choiceBtn" id="scissorsBtn">Scissors</button>
+            <button class="choiceBtn" id="rockBtn"> 
+                <img src="images/rock.svg" alt="rock" id="rockImg"/>
+                 </button>
+            <button class="choiceBtn" id="paperBtn"> 
+                <img src="images/paper.svg" alt="paper" id="paperImg"/>
+                </button>
+            <button  class="choiceBtn" id="scissorsBtn">
+                <img src="images/scissors.svg" alt="scissors" id="scissorsImg"/>
+                </button>
         </div>
-        <span id="humanChoice"></span>
-        <span id="computerChoice"></span>
-        <h2 id="resultLabel"></h4>
+        <span id="computerChoice" class="resultLabel"></span>
+        <span id="humanChoice" class="resultLabel"></span>
+        <h2 id="resultLabel" class="resultLabel"></h4>
         <div class="resultsBox">
-            <span id="humanScore"></span>
-            <span id="drawCount"></span>
-            <span id="computerScore"></span>
+            <span id="humanScore" class="resultLabel"></span>
+            <span id="drawCount" class="resultLabel"></span>
+            <span id="computerScore" class="resultLabel"></span>
         </div>
         
     </div>

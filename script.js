@@ -12,6 +12,7 @@ let computerChoiceLabel = document.querySelector('#computerChoice');
 let computerScoreLabel = document.querySelector('#computerScore');
 let resultLabel = document.querySelector('#resultLabel');
 let choiceBtnClass = document.querySelectorAll('.choiceBtn');
+let resultScoreLabels = document.querySelectorAll('.resultLabel');
 let round = 1;
 
 finishHumanChoice();
@@ -27,6 +28,7 @@ function finishHumanChoice (){
     scoreHuman = 0;
     drawCount = 0;
 };
+
 
 
 function getComputerChoice () {
@@ -60,6 +62,7 @@ function getHumanChoice () {
     humanChoiceLabel.textContent = "";
     computerScoreLabel.textContent = "Computer score: " + scoreComputer;  
     drawCountLabel.textContent = "Draw count: " + drawCount;
+    resetElementClass();
 };
 
 function playRound(playerSelection, computerSelection){
@@ -83,25 +86,26 @@ function playRound(playerSelection, computerSelection){
 document.addEventListener('click', (event) => {
     let target = event.target;
 
-    switch(target.id){
-        case 'startBtn' :
+    switch(true){
+        case target.id ==='startBtn' :
             startBtn.disabled = true;
             resultLabel.textContent = "";
             getHumanChoice();
             break;
-        case 'rockBtn' :
+        case target.id ==='rockBtn' || target.id === 'rockImg':
             playGame('rock');
             break;
-        case 'paperBtn' :
+        case target.id === 'paperBtn' || target.id === 'paperImg' :
             playGame('paper');
             break;
-        case 'scissorsBtn' :
+        case target.id === 'scissorsBtn' || target.id === 'scissorsImg':
             playGame('scissors');
             break;            
     }
 });
 
 function playGame(playerSelection){
+    resetElementClass();
         computerSelection = getComputerChoice();
         let roundResult = playRound(playerSelection, computerSelection);
         computerChoiceLabel.textContent = "Computer chose " + computerSelection;  
@@ -163,8 +167,14 @@ function checkWinner (){
 
 function highlightText(element,color){
     element.classList.add('highlight' + color);
+};
 
-    setTimeout(function() {
-        element.classList.remove('highlight' + color);
-    },2000);
+function resetElementClass(){
+    resultScoreLabels.forEach(label => {
+        if(label.classList.contains('highlightRed')){
+            label.classList.remove('highlightRed');
+        } else if (label.classList.contains('highlightGreen')){
+            label.classList.remove('highlightGreen');
+        };
+    });
 };

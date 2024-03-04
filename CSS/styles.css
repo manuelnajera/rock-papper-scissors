@@ -18,6 +18,10 @@ h1, h2 {
     text-align: center;
 }
 
+h2{ 
+  margin: 10px 10px;
+}
+
 span {
     height: 20px;
 }
@@ -30,7 +34,7 @@ div {
 
 div.rpsButtonHolder{
     flex-direction: row;
-    
+    justify-content: space-around;
 }
 
 button{
@@ -42,6 +46,24 @@ button{
     border-color: #3882f6;
     margin: 0px 15px;
 }
+
+button.choiceBtn {
+  background-color: rgb(149, 166, 166);
+  border-color: rgb(149, 166, 166);
+  padding: 0%;
+  width: 20vw;
+  height: 20vw ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+button.choiceBtn img {
+  padding: 0%;
+  width: 80%;
+}
+
 
 button:disabled {
     background-color: dimgrey;
@@ -62,10 +84,11 @@ button:disabled {
   }
 
   div.buttonHolder span {
-    margin: 20px 15px;
+    margin: 10px 5px;
     text-align: center;
     font-weight: bold;
     font-size: large;
+    
   }
 
   .highlightGreen{
