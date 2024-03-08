@@ -12,10 +12,10 @@ body {
     
 }
 
-.dropbtn {
+div .dropbtn {
   background-color: #b4ad9e;
   color: white;
-  padding: 16px;
+  padding: 5px 5px;
   font-size: 16px;
   border: none;
 }
