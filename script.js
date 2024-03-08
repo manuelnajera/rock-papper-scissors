@@ -205,11 +205,11 @@ function playGame(playerSelection){
 
 function checkWinner (){
     if (scoreHuman === 5){
-        resultLabel.textContent = language['congrats','final-win'];
+        resultLabel.textContent = language['congrats'] + language['final-win'];
         finishHumanChoice();
         return;
     } else if (scoreComputer === 5){
-        resultLabel.textContent = language['sorry','final-lost'];
+        resultLabel.textContent = language['sorry'] + language['final-lost'];
         finishHumanChoice();
         return;
     };
