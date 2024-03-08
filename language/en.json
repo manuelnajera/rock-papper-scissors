@@ -1,0 +1,20 @@
+{
+	"title": "It's rock paper scissors time!",
+	"subtitle": "Play against the computer, the first who wins 5 rounds wins the game!",
+	"start": "Start",
+	"choose-move": "Choose your move for the round",
+	"rock": "Rock",
+	"paper": "Paper",
+	"scissors": "Scissors",
+	"your-score": "Your score: ",
+	"comp-score": "Computer score: ",
+	"draw-count": "Draw count: ",
+	"you-chose": "You chose: ",
+	"comp-chose": "Computer chose: ",
+	"sorry": "Sorry, ",
+	"beats": "beats",
+	"draw": "Draw! Best luck next time",
+	"congrats": "Congrats! ",
+	"final-win": "you won 5 rounds first",
+	"final-lost": "computer won 5 rounds first, best luck next time"
+}

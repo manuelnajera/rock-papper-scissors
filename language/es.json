@@ -1,0 +1,20 @@
+{
+	"title": "Piedra, papel o tijera!",
+	"subtitle": "Juega contra la computadora, el primero en ganar 5 rondas gana la partida!",
+	"start": "Iniciar",
+	"choose-move": "Haz tu elección de la ronda: ",
+	"rock": "Piedra",
+	"paper": "Papel",
+	"scissors": "Tijeras",
+	"your-score": "Tus puntos: ",
+	"comp-score": "Computadora: ",
+	"draw-count": "Empates: ",
+	"you-chose": "Elegiste: ",
+	"comp-chose": "La computadora eligió: ",
+	"sorry": "Lo siento, ",
+	"beats": "vence ",
+	"draw": "Empate!, mejor suerte para la próxima",
+	"congrats": "Felicidades! ",
+	"final-win": "Ganaste 5 rondas!",
+	"final-lost": "la computadora ganó 5 rondas"
+}
