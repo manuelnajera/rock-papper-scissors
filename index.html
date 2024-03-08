@@ -8,24 +8,19 @@
     <link rel="stylesheet" href="CSS/styles.css"> 
 </head>
 <body>
-    <div id="languagediv">
-        
-        <a href="#" id="esLang">Español</a>
-        <a href="#" id="enLang">English</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="langBtn"></button>
+        <div id="languagediv">
+            <a href="#" id="esLang"></a>
+            <a href="#" id="enLang"></a>
+        </div>
     </div>
-    <h1 id="title">
-    </h1>
-    <span>
-    </span>
-    <h2>
-        Play against the computer, the first who wins 5 rounds wins the game!
-    </h2>
+    <h1 id="title"></h1>
+    <h2 id="subtitle"></h2>
     <div class="buttonHolder">
-        <button class="startBtn" id="startBtn"> Start</button>
-        <span>
-
-        </span>
-        <h3  class="choiceBtn">Choose your move for the round </h3>
+        <button class="startBtn" id="startBtn"></button>
+        <span></span>
+        <h3  class="choiceBtn" id="choose-move"></h3>
         <div class="rpsButtonHolder">
             <button class="choiceBtn" id="rockBtn"> 
                 <img src="images/rock.svg" alt="rock" id="rockImg"/>

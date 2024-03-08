@@ -15,36 +15,50 @@ let choiceBtnClass = document.querySelectorAll('.choiceBtn');
 let resultScoreLabels = document.querySelectorAll('.resultLabel');
 let round = 1;
 let language; 
+let userLang = navigator.language || navigator.userLanguage;
 
-console.log(localStorage.getItem('language'), " at beginning");
+function getDefaultLang(){
+    
+    console.log("the def lang is: ", userLang);
+};
+
+getDefaultLang();
+
+
+getLanguage();
 
 function getLanguage() {
-(localStorage.getItem('language') == null) ? setLanguage('en') : false;
-console.log(localStorage.getItem('language'), " in getLanguage");
-$.ajax({ 
-url:  'language/' +  localStorage.getItem('language') + '.json', 
-dataType: 'json',
-success: function (lang) { 
-    language = lang 
-    console.log(lang, " after succesful");
-    applyLanguage();
-} });
-console.log('after ajax: ', 'language/' +  localStorage.getItem('language') + '.json')
+    (localStorage.getItem('language') == null) ? setLanguage('en') : false;
+    $.ajax({ 
+    url:  'language/' +  localStorage.getItem('language') + '.json', 
+    dataType: 'json',
+    success: function (lang) { 
+        language = lang 
+        applyLanguage();
+    },
+    error: function(xhr,status,error){
+        console.error("Error fetching language file", error, status, xhr);
+    } 
+
+});
 };
 
 function setLanguage(lang) {
 localStorage.setItem('language', lang);
-
 $(document).ready(function(){
-    console.log("After document ready: ", language);
     getLanguage();
 });
 };
 
 function applyLanguage(){
-    console.log("Apply languages: ", language);
-    $('#title').text(language.title);
     $(document).attr("title" , language.title);
+    $('#langBtn').text(language[localStorage.getItem('language') ])
+    $('#esLang').text(language.es)
+    $('#enLang').text(language.en)
+    $('#title').text(language.title);
+    $('#subtitle').text(language.subtitle);
+    $('#startBtn').text(language.start);
+    $('#choose-move').text(language['choose-move']);
 };
 
 finishHumanChoice();
@@ -70,11 +84,11 @@ function getComputerChoice () {
 
         switch(computerChoice){
             case 1 :
-                return 'rock'
+                return language.rock
             case 2 :
-                return "paper" 
+                return language.paper 
             case 3 : 
-                return "scissors"
+                return language.scissors
              default:
                 console.error("Choice was not between values 1 to 3")  
                 break         
@@ -82,33 +96,32 @@ function getComputerChoice () {
 };
 
 function getHumanChoice () {
-    
     for(let i = 0; i < choiceBtnClass.length; i++){
         choiceBtnClass[i].style.display = "flex";
         choiceBtnClass[i].disabled = false;
     }; 
 
-    chooseLabel.textContent = "Choose your move for the round " + round;
-    humanScoreLabel.textContent = "Your score: " + scoreHuman;
+    chooseLabel.textContent = language['choose-move'] + round;
+    humanScoreLabel.textContent = language['your-score'] + scoreHuman;
     computerChoiceLabel.textContent = "";  
     humanChoiceLabel.textContent = "";
-    computerScoreLabel.textContent = "Computer score: " + scoreComputer;  
-    drawCountLabel.textContent = "Draw count: " + drawCount;
+    computerScoreLabel.textContent = language['comp-score'] + scoreComputer;  
+    drawCountLabel.textContent = language['draw-count'] + drawCount;
     resetElementClass();
 };
 
 function playRound(playerSelection, computerSelection){
    
-    console.log('You chose ' + playerSelection)
-    console.log('Computer chose ' + computerSelection)
+    console.log(language['you-chose'] + playerSelection)
+    console.log(language['comp-chose'] + computerSelection)
     
    switch (playerSelection){
-    case'rock':
-        return (computerSelection === 'rock'? 0 :computerSelection === 'paper'? -1 :computerSelection === 'scissors'? 1:"error, check console")
-    case 'paper':
-        return (computerSelection === 'paper'? 0:computerSelection === 'scissors'? -1:computerSelection === 'rock'? 1:"error, check console")
-    case 'scissors':
-        return (computerSelection === 'scissors'? 0:computerSelection === 'rock'? -1:computerSelection === 'paper'? 1:"error, check console")
+    case language.rock:
+        return (computerSelection === language.rock? 0 :computerSelection === language.paper? -1 :computerSelection === language.scissors? 1:"error, check console")
+    case language.paper:
+        return (computerSelection === language.paper? 0:computerSelection === language.scissors? -1:computerSelection === language.rock? 1:"error, check console")
+    case language.scissors:
+        return (computerSelection === language.scissors? 0:computerSelection === language.rock? -1:computerSelection === language.paper? 1:"error, check console")
     default:
         return "You didn't choose any valid option!";
    };
@@ -125,13 +138,13 @@ document.addEventListener('click', (event) => {
             getHumanChoice();
             break;
         case target.id ==='rockBtn' || target.id === 'rockImg':
-            playGame('rock');
+            playGame(language.rock);
             break;
         case target.id === 'paperBtn' || target.id === 'paperImg' :
-            playGame('paper');
+            playGame(language.paper);
             break;
         case target.id === 'scissorsBtn' || target.id === 'scissorsImg':
-            playGame('scissors');
+            playGame(language.scissors);
             break;     
         case target.id === 'enLang':
             setLanguage('en');
@@ -146,19 +159,18 @@ function playGame(playerSelection){
     resetElementClass();
         computerSelection = getComputerChoice();
         let roundResult = playRound(playerSelection, computerSelection);
-        computerChoiceLabel.textContent = "Computer chose " + computerSelection;  
-        humanChoiceLabel.textContent = "You chose " + playerSelection;
+        computerChoiceLabel.textContent = language['comp-chose'] + computerSelection;  
+        humanChoiceLabel.textContent = language['you-chose'] + playerSelection;
         console.log(roundResult)
 
         switch(roundResult){
             case -1: 
                 scoreComputer = scoreComputer + 1;
-
                 highlightText(computerChoiceLabel,'Green');
                 highlightText(computerScoreLabel,'Red');
                 highlightText(humanChoiceLabel,'Red');
                 highlightText(resultLabel, 'Red')
-                resultLabel.textContent = 'Sorry, ' + computerSelection + ' beats ' + playerSelection;
+                resultLabel.textContent = language.sorry + computerSelection + language.beats + playerSelection;
             break;   
             case 0:
                 drawCount = drawCount + 1;
@@ -166,7 +178,7 @@ function playGame(playerSelection){
                 highlightText(humanChoiceLabel,'Red');
                 highlightText(computerChoiceLabel,'Red');
                 highlightText(resultLabel, 'Red')
-                resultLabel.textContent = 'Draw! Best luck next time';
+                resultLabel.textContent = language.draw;
             break;    
             case 1:
                 scoreHuman = scoreHuman + 1;
@@ -174,30 +186,30 @@ function playGame(playerSelection){
                 highlightText(humanChoiceLabel,'Green');
                 highlightText(computerChoiceLabel,'Red');
                 highlightText(resultLabel, 'Green')
-                resultLabel.textContent = 'Congrats! ' + playerSelection + ' beats ' + computerSelection;
+                resultLabel.textContent = language.congrats + playerSelection + language.beats + computerSelection;
             break    
             default:
                 resultLabel.textContent = "error, check console";
             break;
         }
 
-    console.log( 'Your score is ' + scoreHuman);
+    console.log( language['your-score'] + scoreHuman);
     round = round + 1;
-    humanScoreLabel.textContent = "Your score: " + scoreHuman;
-    computerScoreLabel.textContent = "Computer score: " + scoreComputer;  
-    drawCountLabel.textContent = "Draw count: " + drawCount;
+    humanScoreLabel.textContent = language['your-score']+ scoreHuman;
+    computerScoreLabel.textContent = language['comp-score'] + scoreComputer;  
+    drawCountLabel.textContent = language['draw-count']+ drawCount;
     
     checkWinner();
-    chooseLabel.textContent = "Choose your move for the round " + round;
+    chooseLabel.textContent = language['choose-move'] + round;
 }
 
 function checkWinner (){
     if (scoreHuman === 5){
-        resultLabel.textContent = 'Congrats! you won 5 rounds first!';
+        resultLabel.textContent = language['congrats','final-win'];
         finishHumanChoice();
         return;
     } else if (scoreComputer === 5){
-        resultLabel.textContent = 'Sorry, computer won 5 rounds first, best luck next time';
+        resultLabel.textContent = language['sorry','final-lost'];
         finishHumanChoice();
         return;
     };
