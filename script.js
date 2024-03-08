@@ -14,6 +14,38 @@ let resultLabel = document.querySelector('#resultLabel');
 let choiceBtnClass = document.querySelectorAll('.choiceBtn');
 let resultScoreLabels = document.querySelectorAll('.resultLabel');
 let round = 1;
+let language; 
+
+console.log(localStorage.getItem('language'), " at beginning");
+
+function getLanguage() {
+(localStorage.getItem('language') == null) ? setLanguage('en') : false;
+console.log(localStorage.getItem('language'), " in getLanguage");
+$.ajax({ 
+url:  'language/' +  localStorage.getItem('language') + '.json', 
+dataType: 'json',
+success: function (lang) { 
+    language = lang 
+    console.log(lang, " after succesful");
+    applyLanguage();
+} });
+console.log('after ajax: ', 'language/' +  localStorage.getItem('language') + '.json')
+};
+
+function setLanguage(lang) {
+localStorage.setItem('language', lang);
+
+$(document).ready(function(){
+    console.log("After document ready: ", language);
+    getLanguage();
+});
+};
+
+function applyLanguage(){
+    console.log("Apply languages: ", language);
+    $('#title').text(language.title);
+    $(document).attr("title" , language.title);
+};
 
 finishHumanChoice();
 
@@ -100,7 +132,13 @@ document.addEventListener('click', (event) => {
             break;
         case target.id === 'scissorsBtn' || target.id === 'scissorsImg':
             playGame('scissors');
-            break;            
+            break;     
+        case target.id === 'enLang':
+            setLanguage('en');
+            break;
+        case target.id === 'esLang':
+            setLanguage('es');
+            break;
     }
 });
 
