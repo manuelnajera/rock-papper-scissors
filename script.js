@@ -135,6 +135,7 @@ document.addEventListener('click', (event) => {
         case target.id ==='startBtn' :
             startBtn.disabled = true;
             resultLabel.textContent = "";
+            computerChoiceImg.src = "";
             resultLabel.scrollIntoView();
             getHumanChoice();
             break;
