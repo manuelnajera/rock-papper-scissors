@@ -15,14 +15,6 @@ let choiceBtnClass = document.querySelectorAll('.choiceBtn');
 let resultScoreLabels = document.querySelectorAll('.resultLabel');
 let round = 1;
 let language; 
-let userLang = navigator.language || navigator.userLanguage;
-
-function getDefaultLang(){
-    
-    console.log("the def lang is: ", userLang);
-};
-
-getDefaultLang();
 
 
 getLanguage();
@@ -75,19 +67,26 @@ function finishHumanChoice (){
     drawCount = 0;
 };
 
+function getRandomInt(min, max) {
+    const randomArray = new Uint32Array(1);
+    window.crypto.getRandomValues(randomArray);
+    const range = max - min;
+    return min + Math.floor(randomArray[0] % range);
+}
 
 
 function getComputerChoice () {
-    const minCeiled = Math.ceil(1);
-    const maxFloored = Math.floor(4);
-     let computerChoice = Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+    const choices = [language.rock,language.paper,language.scissors];
+    const randomIndex = getRandomInt(0,choices.length);
+    console.log("random index: ", randomIndex);
+     let computerChoice = randomIndex;
 
         switch(computerChoice){
             case 1 :
                 return language.rock
             case 2 :
                 return language.paper 
-            case 3 : 
+            case 0 : 
                 return language.scissors
              default:
                 console.error("Choice was not between values 1 to 3")  
