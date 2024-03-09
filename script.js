@@ -9,6 +9,7 @@ let humanScoreLabel = document.querySelector('#humanScore');
 let drawCountLabel = document.querySelector('#drawCount');
 let humanChoiceLabel = document.querySelector('#humanChoice');
 let computerChoiceLabel = document.querySelector('#computerChoice');
+let computerChoiceImg = document.querySelector('#compImg');
 let computerScoreLabel = document.querySelector('#computerScore');
 let resultLabel = document.querySelector('#resultLabel');
 let choiceBtnClass = document.querySelectorAll('.choiceBtn');
@@ -157,9 +158,21 @@ document.addEventListener('click', (event) => {
 
 function playGame(playerSelection){
     resetElementClass();
+        computerChoiceImg.src = "";
         computerSelection = getComputerChoice();
         let roundResult = playRound(playerSelection, computerSelection);
-        computerChoiceLabel.textContent = language['comp-chose'] + computerSelection;  
+        computerChoiceLabel.textContent = language['comp-chose'] + computerSelection;
+        switch (computerSelection){
+            case language.rock:
+               computerChoiceImg.src = "images/rock.svg";
+               break;
+            case language.paper:
+               computerChoiceImg.src = "images/paper.svg";
+               break;
+            case language.scissors:
+                computerChoiceImg.src = "images/scissors.svg";
+                break;
+           };
         humanChoiceLabel.textContent = language['you-chose'] + playerSelection;
         console.log(roundResult)
 
