@@ -4,7 +4,7 @@
 	"title": "Piedra, papel o tijera!",
 	"subtitle": "Juega contra la computadora, el primero en ganar 5 rondas gana la partida!",
 	"start": "Iniciar",
-	"choose-move": "Haz tu elección de la ronda: ",
+	"choose-move": "Turno: ",
 	"rock": "Piedra",
 	"paper": "Papel",
 	"scissors": "Tijeras",

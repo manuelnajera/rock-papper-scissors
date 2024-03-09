@@ -4,7 +4,7 @@
 	"title": "It's rock paper scissors time!",
 	"subtitle": "Play against the computer, the first who wins 5 rounds wins the game!",
 	"start": "Start",
-	"choose-move": "Choose your move for the round",
+	"choose-move": "Round",
 	"rock": "Rock",
 	"paper": "Paper",
 	"scissors": "Scissors",

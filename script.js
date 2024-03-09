@@ -4,13 +4,18 @@ let scoreHuman = 0;
 let scoreComputer = 0;
 let drawCount = 0;
 let startBtn = document.querySelector('#startBtn');
-let chooseLabel = document.querySelector('h3.choiceBtn');
+let titleLabel = document.querySelector('#title');
+let subtitleLabel = document.querySelector('#subtitle');
+let chooseLabel = document.querySelector('h2.choiceBtn');
 let humanScoreLabel = document.querySelector('#humanScore');
+let humanScoreValue = document.querySelector('#humanValue');
 let drawCountLabel = document.querySelector('#drawCount');
+let drawCountValue = document.querySelector('#drawValue');
 let humanChoiceLabel = document.querySelector('#humanChoice');
 let computerChoiceLabel = document.querySelector('#computerChoice');
 let computerChoiceImg = document.querySelector('#compImg');
 let computerScoreLabel = document.querySelector('#computerScore');
+let computerScoreValue = document.querySelector('#compValue');
 let resultLabel = document.querySelector('#resultLabel');
 let choiceBtnClass = document.querySelectorAll('.choiceBtn');
 let resultScoreLabels = document.querySelectorAll('.resultLabel');
@@ -61,6 +66,9 @@ function finishHumanChoice (){
         choiceBtnClass[i].disabled = true;
     };
     startBtn.disabled = false;
+    titleLabel.style.display = "flex";
+    subtitleLabel.style.display = "flex";
+    startBtn.style.display = "flex";
     round = 1;
     scoreComputer = 0;
     scoreHuman = 0;
@@ -100,12 +108,18 @@ function getHumanChoice () {
         choiceBtnClass[i].disabled = false;
     }; 
 
+    titleLabel.style.display = "none";
+    subtitleLabel.style.display = "none";
+    startBtn.style.display = "none";
     chooseLabel.textContent = language['choose-move'] + round;
-    humanScoreLabel.textContent = language['your-score'] + scoreHuman;
+    humanScoreLabel.textContent = language['your-score'];
+    humanScoreValue.textContent = scoreHuman;
     computerChoiceLabel.textContent = language['comp-chose'] + ".....";  
     humanChoiceLabel.textContent = "";
-    computerScoreLabel.textContent = language['comp-score'] + scoreComputer;  
-    drawCountLabel.textContent = language['draw-count'] + drawCount;
+    computerScoreLabel.textContent = language['comp-score']; 
+    computerScoreValue.textContent = scoreComputer; 
+    drawCountLabel.textContent = language['draw-count'];
+    drawCountValue.textContent = drawCount;
 
     resetElementClass();
 };
@@ -209,9 +223,12 @@ function playGame(playerSelection){
 
     console.log( language['your-score'] + scoreHuman);
     round = round + 1;
-    humanScoreLabel.textContent = language['your-score']+ scoreHuman;
-    computerScoreLabel.textContent = language['comp-score'] + scoreComputer;  
-    drawCountLabel.textContent = language['draw-count']+ drawCount;
+    humanScoreLabel.textContent = language['your-score'];
+    humanScoreValue.textContent = scoreHuman;
+    computerScoreLabel.textContent = language['comp-score'];  
+    computerScoreValue.textContent = scoreComputer;
+    drawCountLabel.textContent = language['draw-count'];
+    drawCountValue.textContent = drawCount;
     
     checkWinner();
     chooseLabel.textContent = language['choose-move'] + round;
