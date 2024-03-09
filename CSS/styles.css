@@ -58,7 +58,7 @@ h2{
 }
 
 span {
-    height: 20px;
+    height: 15px;
 }
 
 div {
@@ -112,7 +112,7 @@ button:disabled {
   }
 
   div.resultsBox span {
-    margin: 5px 15px;
+    margin: 5px 5px;
     text-align: center;
     font-weight: bold;
     font-size: large;

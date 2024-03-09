@@ -16,7 +16,6 @@ let resultScoreLabels = document.querySelectorAll('.resultLabel');
 let round = 1;
 let language; 
 
-
 getLanguage();
 
 function getLanguage() {
@@ -102,10 +101,11 @@ function getHumanChoice () {
 
     chooseLabel.textContent = language['choose-move'] + round;
     humanScoreLabel.textContent = language['your-score'] + scoreHuman;
-    computerChoiceLabel.textContent = "";  
+    computerChoiceLabel.textContent = language['comp-chose'] + ".....";  
     humanChoiceLabel.textContent = "";
     computerScoreLabel.textContent = language['comp-score'] + scoreComputer;  
     drawCountLabel.textContent = language['draw-count'] + drawCount;
+
     resetElementClass();
 };
 
@@ -134,6 +134,7 @@ document.addEventListener('click', (event) => {
         case target.id ==='startBtn' :
             startBtn.disabled = true;
             resultLabel.textContent = "";
+            resultLabel.scrollIntoView();
             getHumanChoice();
             break;
         case target.id ==='rockBtn' || target.id === 'rockImg':
